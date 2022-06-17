@@ -1,7 +1,7 @@
 
 # Authing golang SDK 授权相关的文档
 ## 登录流程
-golang SDK 中使用 OIDC 协议的授权码模式进行认证，其使用的时序图如下：
+golang SDK 中使用 OIDC 协议的[授权码模式](https://docs.authing.cn/v2/concepts/oidc/choose-flow.html#%E6%8E%88%E6%9D%83%E7%A0%81%E6%A8%A1%E5%BC%8F)进行认证，其使用的时序图如下：
 
 ![](login_flow.drawio.png)
 
@@ -31,13 +31,15 @@ authClient, err =  authentication.NewClient(&authentication.AuthenticationClient
 
 其中 AppId AppSecret Domain RedirectUri 是必选参数，LogoutRedirectUri Scope 是可选参数。
 
-Scope 以空格分隔，默认为 `openid profile`，各个 scope 的说明：
+Scope 以空格分隔，默认为 `openid profile`，常见 scope 如下：
 
 | 名称             | 说明                                                   | 必选  |
 | -------------- | ---------------------------------------------------- | --- |
 | openid         | OIDC专用 scope                                         | 是   |
 | profile        | 用户信息                                                 | 否   |
 | offline_access | 获取用户的 Refresh Token，可用于调用 refreshLoginState 刷新用户的登录态 | 否   |
+
+更多 scope 定义参见 Authing 相关[文档](https://docs.authing.cn/v2/concepts/oidc-common-questions.html#scope-%E5%8F%82%E6%95%B0%E5%AF%B9%E5%BA%94%E7%9A%84%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF)。
 
 ### 2.2 生成授权地址
 
@@ -80,12 +82,14 @@ loginState, err = authClient.GetLoginStateByAuthCode(&authentication.CodeToToken
 | 字段名               | 类型                 | 说明                          |
 | ----------------- | ------------------ | --------------------------- |
 | AccessToken       | string             | access token 的 base64 格式字符串 |
-| IdToken           | string             | id token 的 base64 字符串       |
+| IDToken           | string             | id token 的 base64 字符串       |
 | RefreshToken      | string             |                             |
 | ExpiresIn         | uint64             | 多长时间后失效，单位为秒                |
 | ExpireAt          | time               | 失效时间                        |
 | ParsedIDToken     | *IDTokenClaims     | 解析后的 id token 结构体           |
 | ParsedAccessToken | *AccessTokenClaims | 解析后的 access token 结构体       |
+
+注意 id token 中包含用户字段，字段定义参见 Authing [文档](https://docs.authing.cn/v2/concepts/oidc-common-questions.html#oidc-%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E5%AD%97%E6%AE%B5%E5%90%AB%E4%B9%89) 。
 
 ### 2.4 根据 access token 换取用户信息
 
