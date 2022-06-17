@@ -2,6 +2,8 @@ github.com/Authing/authing-golang-sdk v0.0.4 h1:Pfe9PVEeiPiXaX48TNJK0qQap6jge9E7
 github.com/Authing/authing-golang-sdk v0.0.4/go.mod h1:uxTOMtaCq+rPD0VuiDINHPicU1nEpl1o2QAkBnSdX6U=
 github.com/Authing/authing-golang-sdk v0.0.5 h1:UAQDj/pbX00BB1aWa0H4wShvDnbX+5kVtSKqWnjRSo4=
 github.com/Authing/authing-golang-sdk v0.0.5/go.mod h1:uxTOMtaCq+rPD0VuiDINHPicU1nEpl1o2QAkBnSdX6U=
+github.com/Authing/authing-golang-sdk v0.0.6 h1:IkPAYMCKnmb4pmFnAzcBJZRn1hzXV6/AcL2IQKfu8EY=
+github.com/Authing/authing-golang-sdk v0.0.6/go.mod h1:uxTOMtaCq+rPD0VuiDINHPicU1nEpl1o2QAkBnSdX6U=
 github.com/MicahParks/compatibility-keyfunc v0.14.0 h1:VRRQiygqgRcNfTetVM0gqHc2Gl4vn2R0wT2Ph37Qi9M=
 github.com/MicahParks/compatibility-keyfunc v0.14.0/go.mod h1:J3Oey5Hj4gxFX8F6lQMms2F9sYhrTzWvsLYIDvz/EFs=
 github.com/andybalholm/brotli v1.0.4 h1:V7DdXeJtZscaqfNuAdSRuRFzuiKlHSC/Zh3zl9qY3JY=

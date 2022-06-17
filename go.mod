@@ -3,7 +3,7 @@ module github.com/Authing/golang-sdk-auth-demo
 go 1.17
 
 require (
-	github.com/Authing/authing-golang-sdk v0.0.5
+	github.com/Authing/authing-golang-sdk v0.0.6
 	github.com/andybalholm/brotli v1.0.4 // indirect
 	github.com/fasthttp/router v1.4.10
 	github.com/fasthttp/session/v2 v2.4.11

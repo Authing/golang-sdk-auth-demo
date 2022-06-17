@@ -115,8 +115,7 @@ func callbackHandler(ctx *fasthttp.RequestCtx) {
 	store.Set("user", string(bytes))
 	
 
-	ctx.SetContentType("text/html;charset=utf-8")
-	ctx.SetBodyString(htmlLogined)
+	ctx.Redirect("/show", 301)
 }
 
 func showHandler(ctx *fasthttp.RequestCtx) {
@@ -130,8 +129,13 @@ func showHandler(ctx *fasthttp.RequestCtx) {
 			ctx.Error(err.Error(), fasthttp.StatusInternalServerError)
 		}
 	}()
-	user := store.Get("user").(string)
-	ctx.SetBodyString(user)
+	user := store.Get("user")
+	if (user == nil) {
+		ctx.Error("用户尚未登录", 403)
+		return
+	}
+	ctx.SetContentType("text/html;charset=utf-8")
+	ctx.SetBodyString(user.(string) + "\n" + htmlLogined)
 }
 
 func logoutHandler(ctx *fasthttp.RequestCtx) {
@@ -156,8 +160,8 @@ func logoutHandler(ctx *fasthttp.RequestCtx) {
 	store.Delete("user")
 	var url string
 	url, err = authClient.BuildLogoutUrl(&authentication.LogoutURLParams{
-		IDTokenHint: loginState.IdToken,
-		RedirectUri: fmt.Sprintf("http://localhost:%d", port),
+		IDTokenHint: loginState.IDToken,
+		PostLogoutRedirectUri: fmt.Sprintf("http://localhost:%d", port),
 	})
 	if err != nil {
 		log.Fatalf("构建退出url失败：%v", err)
