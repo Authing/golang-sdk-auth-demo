@@ -15,7 +15,7 @@
 Authing golang SDK authorization authentication demo project, this project uses fasthttp as a demo project, using [Gin](https://gin-gonic.com/) [Beego](https://beego.vip/) [iris](https://github.com/kataras/iris) and other frameworks are similar to the use of the process.
 
 ## Documentation
-- See [here] for documentation on how to use it(docs/auth.md)
+- See [here](docs/auth.md) for documentation on how to use it
 - [godoc](https://pkg.go.dev/github.com/Authing/authing-golang-sdk/authentication)
 
 ## Questions
